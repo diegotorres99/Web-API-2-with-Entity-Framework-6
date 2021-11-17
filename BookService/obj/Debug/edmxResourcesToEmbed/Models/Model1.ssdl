@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDCrudTestGloboMarketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="categoria">
+    <Key>
+      <PropertyRef Name="id_categ" />
+    </Key>
+    <Property Name="id_categ" Type="bigint" Nullable="false" />
+    <Property Name="nombre_categ" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="descrip_categ" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="productos">
+    <Key>
+      <PropertyRef Name="id_prod" />
+    </Key>
+    <Property Name="id_prod" Type="bigint" Nullable="false" />
+    <Property Name="nombre_prod" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="descrip_prod" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="product_image" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="precio_prod" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="desc_product" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="cantidad_stock" Type="bigint" Nullable="false" />
+    <Property Name="unidad_de_medida_peso" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="peso_prod" Type="float" Nullable="false" />
+    <Property Name="volumen_prod" Type="float" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+    <Property Name="proveedor" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="marca" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sub_categoria">
+    <Key>
+      <PropertyRef Name="id_subcateg" />
+    </Key>
+    <Property Name="id_subcateg" Type="bigint" Nullable="false" />
+    <Property Name="nombre_subCat" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="descrip_subCat" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <Function Name="Usp_Delete_Categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_categ" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="Usp_Delete_Sub_Categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_subcateg" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="Usp_Ins_Categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_categ" Type="bigint" Mode="In" />
+    <Parameter Name="nombre_categ" Type="varchar" Mode="In" />
+    <Parameter Name="descrip_categ" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Usp_Ins_Sub_Categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_subcateg" Type="bigint" Mode="In" />
+    <Parameter Name="nombre_subCat" Type="varchar" Mode="In" />
+    <Parameter Name="descrip_subCat" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Usp_Sel_All_Product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_Sel_Categ_Disponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_Sel_Prod_Brand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_Sel_Prod_Prices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_Sel_Prod_Supplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_Sel_Sub_Categ_Disponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_Update_Categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_categ" Type="bigint" Mode="In" />
+    <Parameter Name="nombre_categ" Type="varchar" Mode="In" />
+    <Parameter Name="descrip_categ" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Usp_Update_Sub_Categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_subcateg" Type="bigint" Mode="In" />
+    <Parameter Name="nombre_subCatg" Type="varchar" Mode="In" />
+    <Parameter Name="descrip_subCat" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="BDCrudTestGloboMarketModelStoreContainer">
+    <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="productos" EntityType="Self.productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sub_categoria" EntityType="Self.sub_categoria" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

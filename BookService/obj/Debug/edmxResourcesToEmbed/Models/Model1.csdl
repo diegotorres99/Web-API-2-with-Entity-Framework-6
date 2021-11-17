@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDCrudTestGloboMarketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="categoria">
+    <Key>
+      <PropertyRef Name="id_categ" />
+    </Key>
+    <Property Name="id_categ" Type="Int64" Nullable="false" />
+    <Property Name="nombre_categ" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descrip_categ" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="productos">
+    <Key>
+      <PropertyRef Name="id_prod" />
+    </Key>
+    <Property Name="id_prod" Type="Int64" Nullable="false" />
+    <Property Name="nombre_prod" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descrip_prod" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="product_image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="precio_prod" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="desc_product" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="cantidad_stock" Type="Int64" Nullable="false" />
+    <Property Name="unidad_de_medida_peso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="peso_prod" Type="Double" Nullable="false" />
+    <Property Name="volumen_prod" Type="Double" Nullable="false" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <Property Name="proveedor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="marca" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sub_categoria">
+    <Key>
+      <PropertyRef Name="id_subcateg" />
+    </Key>
+    <Property Name="id_subcateg" Type="Int64" Nullable="false" />
+    <Property Name="nombre_subCat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descrip_subCat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="BDCrudTestGloboMarketEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="categoria" EntityType="Self.categoria" />
+    <EntitySet Name="productos" EntityType="Self.productos" />
+    <EntitySet Name="sub_categoria" EntityType="Self.sub_categoria" />
+    <FunctionImport Name="Usp_Delete_Categoria">
+      <Parameter Name="id_categ" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="Usp_Delete_Sub_Categoria">
+      <Parameter Name="id_subcateg" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="Usp_Ins_Categoria">
+      <Parameter Name="id_categ" Mode="In" Type="Int64" />
+      <Parameter Name="nombre_categ" Mode="In" Type="String" />
+      <Parameter Name="descrip_categ" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Usp_Ins_Sub_Categoria">
+      <Parameter Name="id_subcateg" Mode="In" Type="Int64" />
+      <Parameter Name="nombre_subCat" Mode="In" Type="String" />
+      <Parameter Name="descrip_subCat" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Usp_Sel_All_Product" ReturnType="Collection(BDCrudTestGloboMarketModel.Usp_Sel_All_Product_Result)" />
+    <FunctionImport Name="Usp_Sel_Categ_Disponibles" ReturnType="Collection(BDCrudTestGloboMarketModel.Usp_Sel_Categ_Disponibles_Result)" />
+    <FunctionImport Name="Usp_Sel_Prod_Brand" ReturnType="Collection(String)" />
+    <FunctionImport Name="Usp_Sel_Prod_Prices" ReturnType="Collection(Decimal)" />
+    <FunctionImport Name="Usp_Sel_Prod_Supplier" ReturnType="Collection(String)" />
+    <FunctionImport Name="Usp_Sel_Sub_Categ_Disponibles" ReturnType="Collection(BDCrudTestGloboMarketModel.Usp_Sel_Sub_Categ_Disponibles_Result)" />
+    <FunctionImport Name="Usp_Update_Categoria">
+      <Parameter Name="id_categ" Mode="In" Type="Int64" />
+      <Parameter Name="nombre_categ" Mode="In" Type="String" />
+      <Parameter Name="descrip_categ" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Usp_Update_Sub_Categoria">
+      <Parameter Name="id_subcateg" Mode="In" Type="Int64" />
+      <Parameter Name="nombre_subCatg" Mode="In" Type="String" />
+      <Parameter Name="descrip_subCat" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="Usp_Sel_All_Product_Result">
+    <Property Type="String" Name="nombre_prod" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="descrip_prod" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="product_image" Nullable="false" MaxLength="255" />
+    <Property Type="Decimal" Name="precio_prod" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="String" Name="proveedor" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="marca" Nullable="false" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="Usp_Sel_Categ_Disponibles_Result">
+    <Property Type="Int64" Name="id_categ" Nullable="false" />
+    <Property Type="String" Name="nombre_categ" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="descrip_categ" Nullable="false" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="Usp_Sel_Sub_Categ_Disponibles_Result">
+    <Property Type="Int64" Name="id_subcateg" Nullable="false" />
+    <Property Type="String" Name="nombre_subCat" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="descrip_subCat" Nullable="false" MaxLength="255" />
+  </ComplexType>
+</Schema>

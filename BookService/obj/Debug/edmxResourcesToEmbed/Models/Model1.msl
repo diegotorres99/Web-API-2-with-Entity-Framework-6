@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDCrudTestGloboMarketModelStoreContainer" CdmEntityContainer="BDCrudTestGloboMarketEntities">
+    <EntitySetMapping Name="categoria">
+      <EntityTypeMapping TypeName="BDCrudTestGloboMarketModel.categoria">
+        <MappingFragment StoreEntitySet="categoria">
+          <ScalarProperty Name="id_categ" ColumnName="id_categ" />
+          <ScalarProperty Name="nombre_categ" ColumnName="nombre_categ" />
+          <ScalarProperty Name="descrip_categ" ColumnName="descrip_categ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productos">
+      <EntityTypeMapping TypeName="BDCrudTestGloboMarketModel.productos">
+        <MappingFragment StoreEntitySet="productos">
+          <ScalarProperty Name="id_prod" ColumnName="id_prod" />
+          <ScalarProperty Name="nombre_prod" ColumnName="nombre_prod" />
+          <ScalarProperty Name="descrip_prod" ColumnName="descrip_prod" />
+          <ScalarProperty Name="product_image" ColumnName="product_image" />
+          <ScalarProperty Name="precio_prod" ColumnName="precio_prod" />
+          <ScalarProperty Name="desc_product" ColumnName="desc_product" />
+          <ScalarProperty Name="cantidad_stock" ColumnName="cantidad_stock" />
+          <ScalarProperty Name="unidad_de_medida_peso" ColumnName="unidad_de_medida_peso" />
+          <ScalarProperty Name="peso_prod" ColumnName="peso_prod" />
+          <ScalarProperty Name="volumen_prod" ColumnName="volumen_prod" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sub_categoria">
+      <EntityTypeMapping TypeName="BDCrudTestGloboMarketModel.sub_categoria">
+        <MappingFragment StoreEntitySet="sub_categoria">
+          <ScalarProperty Name="id_subcateg" ColumnName="id_subcateg" />
+          <ScalarProperty Name="nombre_subCat" ColumnName="nombre_subCat" />
+          <ScalarProperty Name="descrip_subCat" ColumnName="descrip_subCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Usp_Delete_Categoria" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Delete_Categoria" />
+    <FunctionImportMapping FunctionImportName="Usp_Delete_Sub_Categoria" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Delete_Sub_Categoria" />
+    <FunctionImportMapping FunctionImportName="Usp_Ins_Categoria" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Ins_Categoria" />
+    <FunctionImportMapping FunctionImportName="Usp_Ins_Sub_Categoria" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Ins_Sub_Categoria" />
+    <FunctionImportMapping FunctionImportName="Usp_Sel_All_Product" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Sel_All_Product">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDCrudTestGloboMarketModel.Usp_Sel_All_Product_Result">
+          <ScalarProperty Name="nombre_prod" ColumnName="nombre_prod" />
+          <ScalarProperty Name="descrip_prod" ColumnName="descrip_prod" />
+          <ScalarProperty Name="product_image" ColumnName="product_image" />
+          <ScalarProperty Name="precio_prod" ColumnName="precio_prod" />
+          <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Usp_Sel_Categ_Disponibles" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Sel_Categ_Disponibles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDCrudTestGloboMarketModel.Usp_Sel_Categ_Disponibles_Result">
+          <ScalarProperty Name="id_categ" ColumnName="id_categ" />
+          <ScalarProperty Name="nombre_categ" ColumnName="nombre_categ" />
+          <ScalarProperty Name="descrip_categ" ColumnName="descrip_categ" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Usp_Sel_Prod_Brand" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Sel_Prod_Brand" />
+    <FunctionImportMapping FunctionImportName="Usp_Sel_Prod_Prices" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Sel_Prod_Prices" />
+    <FunctionImportMapping FunctionImportName="Usp_Sel_Prod_Supplier" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Sel_Prod_Supplier" />
+    <FunctionImportMapping FunctionImportName="Usp_Sel_Sub_Categ_Disponibles" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Sel_Sub_Categ_Disponibles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDCrudTestGloboMarketModel.Usp_Sel_Sub_Categ_Disponibles_Result">
+          <ScalarProperty Name="id_subcateg" ColumnName="id_subcateg" />
+          <ScalarProperty Name="nombre_subCat" ColumnName="nombre_subCat" />
+          <ScalarProperty Name="descrip_subCat" ColumnName="descrip_subCat" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Usp_Update_Categoria" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Update_Categoria" />
+    <FunctionImportMapping FunctionImportName="Usp_Update_Sub_Categoria" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Update_Sub_Categoria" />
+  </EntityContainerMapping>
+</Mapping>

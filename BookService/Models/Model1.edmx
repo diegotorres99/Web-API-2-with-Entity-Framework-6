@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BDCrudTestGloboMarketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id_categ" />
+          </Key>
+          <Property Name="id_categ" Type="bigint" Nullable="false" />
+          <Property Name="nombre_categ" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="descrip_categ" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="productos">
+          <Key>
+            <PropertyRef Name="id_prod" />
+          </Key>
+          <Property Name="id_prod" Type="bigint" Nullable="false" />
+          <Property Name="nombre_prod" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="descrip_prod" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="product_image" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="precio_prod" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="desc_product" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cantidad_stock" Type="bigint" Nullable="false" />
+          <Property Name="unidad_de_medida_peso" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="peso_prod" Type="float" Nullable="false" />
+          <Property Name="volumen_prod" Type="float" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+          <Property Name="proveedor" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="marca" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sub_categoria">
+          <Key>
+            <PropertyRef Name="id_subcateg" />
+          </Key>
+          <Property Name="id_subcateg" Type="bigint" Nullable="false" />
+          <Property Name="nombre_subCat" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="descrip_subCat" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Function Name="Usp_Delete_Categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_categ" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Usp_Delete_Sub_Categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_subcateg" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Usp_Ins_Categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_categ" Type="bigint" Mode="In" />
+          <Parameter Name="nombre_categ" Type="varchar" Mode="In" />
+          <Parameter Name="descrip_categ" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Usp_Ins_Sub_Categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_subcateg" Type="bigint" Mode="In" />
+          <Parameter Name="nombre_subCat" Type="varchar" Mode="In" />
+          <Parameter Name="descrip_subCat" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Usp_Sel_All_Product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_Sel_Categ_Disponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_Sel_Prod_Brand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_Sel_Prod_Prices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_Sel_Prod_Supplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_Sel_Sub_Categ_Disponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_Update_Categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_categ" Type="bigint" Mode="In" />
+          <Parameter Name="nombre_categ" Type="varchar" Mode="In" />
+          <Parameter Name="descrip_categ" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Usp_Update_Sub_Categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_subcateg" Type="bigint" Mode="In" />
+          <Parameter Name="nombre_subCatg" Type="varchar" Mode="In" />
+          <Parameter Name="descrip_subCat" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="BDCrudTestGloboMarketModelStoreContainer">
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="productos" EntityType="Self.productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sub_categoria" EntityType="Self.sub_categoria" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDCrudTestGloboMarketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id_categ" />
+          </Key>
+          <Property Name="id_categ" Type="Int64" Nullable="false" />
+          <Property Name="nombre_categ" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descrip_categ" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="productos">
+          <Key>
+            <PropertyRef Name="id_prod" />
+          </Key>
+          <Property Name="id_prod" Type="Int64" Nullable="false" />
+          <Property Name="nombre_prod" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descrip_prod" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precio_prod" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="desc_product" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cantidad_stock" Type="Int64" Nullable="false" />
+          <Property Name="unidad_de_medida_peso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="peso_prod" Type="Double" Nullable="false" />
+          <Property Name="volumen_prod" Type="Double" Nullable="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <Property Name="proveedor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="marca" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sub_categoria">
+          <Key>
+            <PropertyRef Name="id_subcateg" />
+          </Key>
+          <Property Name="id_subcateg" Type="Int64" Nullable="false" />
+          <Property Name="nombre_subCat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descrip_subCat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BDCrudTestGloboMarketEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categoria" EntityType="Self.categoria" />
+          <EntitySet Name="productos" EntityType="Self.productos" />
+          <EntitySet Name="sub_categoria" EntityType="Self.sub_categoria" />
+          <FunctionImport Name="Usp_Delete_Categoria">
+            <Parameter Name="id_categ" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_Delete_Sub_Categoria">
+            <Parameter Name="id_subcateg" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_Ins_Categoria">
+            <Parameter Name="id_categ" Mode="In" Type="Int64" />
+            <Parameter Name="nombre_categ" Mode="In" Type="String" />
+            <Parameter Name="descrip_categ" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_Ins_Sub_Categoria">
+            <Parameter Name="id_subcateg" Mode="In" Type="Int64" />
+            <Parameter Name="nombre_subCat" Mode="In" Type="String" />
+            <Parameter Name="descrip_subCat" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_Sel_All_Product" ReturnType="Collection(BDCrudTestGloboMarketModel.Usp_Sel_All_Product_Result)" />
+          <FunctionImport Name="Usp_Sel_Categ_Disponibles" ReturnType="Collection(BDCrudTestGloboMarketModel.Usp_Sel_Categ_Disponibles_Result)" />
+          <FunctionImport Name="Usp_Sel_Prod_Brand" ReturnType="Collection(String)" />
+          <FunctionImport Name="Usp_Sel_Prod_Prices" ReturnType="Collection(Decimal)" />
+          <FunctionImport Name="Usp_Sel_Prod_Supplier" ReturnType="Collection(String)" />
+          <FunctionImport Name="Usp_Sel_Sub_Categ_Disponibles" ReturnType="Collection(BDCrudTestGloboMarketModel.Usp_Sel_Sub_Categ_Disponibles_Result)" />
+          <FunctionImport Name="Usp_Update_Categoria">
+            <Parameter Name="id_categ" Mode="In" Type="Int64" />
+            <Parameter Name="nombre_categ" Mode="In" Type="String" />
+            <Parameter Name="descrip_categ" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_Update_Sub_Categoria">
+            <Parameter Name="id_subcateg" Mode="In" Type="Int64" />
+            <Parameter Name="nombre_subCatg" Mode="In" Type="String" />
+            <Parameter Name="descrip_subCat" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Usp_Sel_All_Product_Result">
+          <Property Type="String" Name="nombre_prod" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="descrip_prod" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="product_image" Nullable="false" MaxLength="255" />
+          <Property Type="Decimal" Name="precio_prod" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="proveedor" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="marca" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="Usp_Sel_Categ_Disponibles_Result">
+          <Property Type="Int64" Name="id_categ" Nullable="false" />
+          <Property Type="String" Name="nombre_categ" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="descrip_categ" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="Usp_Sel_Sub_Categ_Disponibles_Result">
+          <Property Type="Int64" Name="id_subcateg" Nullable="false" />
+          <Property Type="String" Name="nombre_subCat" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="descrip_subCat" Nullable="false" MaxLength="255" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDCrudTestGloboMarketModelStoreContainer" CdmEntityContainer="BDCrudTestGloboMarketEntities">
+          <EntitySetMapping Name="categoria">
+            <EntityTypeMapping TypeName="BDCrudTestGloboMarketModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="id_categ" ColumnName="id_categ" />
+                <ScalarProperty Name="nombre_categ" ColumnName="nombre_categ" />
+                <ScalarProperty Name="descrip_categ" ColumnName="descrip_categ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productos">
+            <EntityTypeMapping TypeName="BDCrudTestGloboMarketModel.productos">
+              <MappingFragment StoreEntitySet="productos">
+                <ScalarProperty Name="id_prod" ColumnName="id_prod" />
+                <ScalarProperty Name="nombre_prod" ColumnName="nombre_prod" />
+                <ScalarProperty Name="descrip_prod" ColumnName="descrip_prod" />
+                <ScalarProperty Name="product_image" ColumnName="product_image" />
+                <ScalarProperty Name="precio_prod" ColumnName="precio_prod" />
+                <ScalarProperty Name="desc_product" ColumnName="desc_product" />
+                <ScalarProperty Name="cantidad_stock" ColumnName="cantidad_stock" />
+                <ScalarProperty Name="unidad_de_medida_peso" ColumnName="unidad_de_medida_peso" />
+                <ScalarProperty Name="peso_prod" ColumnName="peso_prod" />
+                <ScalarProperty Name="volumen_prod" ColumnName="volumen_prod" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sub_categoria">
+            <EntityTypeMapping TypeName="BDCrudTestGloboMarketModel.sub_categoria">
+              <MappingFragment StoreEntitySet="sub_categoria">
+                <ScalarProperty Name="id_subcateg" ColumnName="id_subcateg" />
+                <ScalarProperty Name="nombre_subCat" ColumnName="nombre_subCat" />
+                <ScalarProperty Name="descrip_subCat" ColumnName="descrip_subCat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Usp_Delete_Categoria" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Delete_Categoria" />
+          <FunctionImportMapping FunctionImportName="Usp_Delete_Sub_Categoria" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Delete_Sub_Categoria" />
+          <FunctionImportMapping FunctionImportName="Usp_Ins_Categoria" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Ins_Categoria" />
+          <FunctionImportMapping FunctionImportName="Usp_Ins_Sub_Categoria" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Ins_Sub_Categoria" />
+          <FunctionImportMapping FunctionImportName="Usp_Sel_All_Product" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Sel_All_Product">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDCrudTestGloboMarketModel.Usp_Sel_All_Product_Result">
+                <ScalarProperty Name="nombre_prod" ColumnName="nombre_prod" />
+                <ScalarProperty Name="descrip_prod" ColumnName="descrip_prod" />
+                <ScalarProperty Name="product_image" ColumnName="product_image" />
+                <ScalarProperty Name="precio_prod" ColumnName="precio_prod" />
+                <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_Sel_Categ_Disponibles" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Sel_Categ_Disponibles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDCrudTestGloboMarketModel.Usp_Sel_Categ_Disponibles_Result">
+                <ScalarProperty Name="id_categ" ColumnName="id_categ" />
+                <ScalarProperty Name="nombre_categ" ColumnName="nombre_categ" />
+                <ScalarProperty Name="descrip_categ" ColumnName="descrip_categ" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_Sel_Prod_Brand" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Sel_Prod_Brand" />
+          <FunctionImportMapping FunctionImportName="Usp_Sel_Prod_Prices" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Sel_Prod_Prices" />
+          <FunctionImportMapping FunctionImportName="Usp_Sel_Prod_Supplier" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Sel_Prod_Supplier" />
+          <FunctionImportMapping FunctionImportName="Usp_Sel_Sub_Categ_Disponibles" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Sel_Sub_Categ_Disponibles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDCrudTestGloboMarketModel.Usp_Sel_Sub_Categ_Disponibles_Result">
+                <ScalarProperty Name="id_subcateg" ColumnName="id_subcateg" />
+                <ScalarProperty Name="nombre_subCat" ColumnName="nombre_subCat" />
+                <ScalarProperty Name="descrip_subCat" ColumnName="descrip_subCat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_Update_Categoria" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Update_Categoria" />
+          <FunctionImportMapping FunctionImportName="Usp_Update_Sub_Categoria" FunctionName="BDCrudTestGloboMarketModel.Store.Usp_Update_Sub_Categoria" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
